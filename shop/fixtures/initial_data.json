@@ -1,0 +1,122 @@
+[
+  {
+    "model": "shop.category",
+    "pk": 1,
+    "fields": {
+      "name": "Электроника",
+      "description": "Смартфоны, ноутбуки, аксессуары"
+    }
+  },
+  {
+    "model": "shop.category",
+    "pk": 2,
+    "fields": {
+      "name": "Книги",
+      "description": "Художественная и техническая литература"
+    }
+  },
+  {
+    "model": "shop.category",
+    "pk": 3,
+    "fields": {
+      "name": "Одежда",
+      "description": "Мужская и женская одежда"
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 1,
+    "fields": {
+      "name": "iPhone 15 Pro",
+      "description": "Смартфон Apple с чипом A17 Pro, 256 ГБ памяти, титановый корпус.",
+      "category": 1,
+      "added_at": "2026-01-15T10:00:00Z",
+      "price": "1299.00",
+      "image": "https://softech.kg/image/catalog/Products/Phones/Apple/15%20Pro/01.jpg"
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 2,
+    "fields": {
+      "name": "MacBook Air M3",
+      "description": "Ноутбук Apple с процессором M3, 16 ГБ ОЗУ, 512 ГБ SSD.",
+      "category": 1,
+      "added_at": "2026-02-10T12:30:00Z",
+      "price": "1599.00",
+      "image": "https://asiastore.kg/image/cache/catalog/1newpage/apple/macbook/air/airm3/air15/mba15-m3-midnight-gallery1-202402-1200x1200.jpeg"
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 3,
+    "fields": {
+      "name": "AirPods Pro 2",
+      "description": "Беспроводные наушники с активным шумоподавлением.",
+      "category": 1,
+      "added_at": "2026-03-01T09:15:00Z",
+      "price": "249.00",
+      "image": "https://asiastore.kg/image/cache/catalog/airpods/airpodspro2gn/mqd83-1200x1200.jpeg"
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 4,
+    "fields": {
+      "name": "Чистый код",
+      "description": "Книга Роберта Мартина о принципах написания качественного кода.",
+      "category": 2,
+      "added_at": "2026-03-05T14:00:00Z",
+      "price": "35.00",
+      "image": "https://avatars.mds.yandex.net/i?id=1ed2caa068e52232f096e96b558108b045de19cb-17448378-images-thumbs&n=13"
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 5,
+    "fields": {
+      "name": "Django",
+      "description": "Практическое руководство по разработке веб-приложений на Django.",
+      "category": 2,
+      "added_at": "2026-03-12T16:45:00Z",
+      "price": "29.00",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi25V2JwtWDEctBM-B7q28gPNMn3baISOI5g&s"
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 6,
+    "fields": {
+      "name": "Куртка зимняя",
+      "description": "Тёплая зимняя куртка с капюшоном, водоотталкивающая ткань.",
+      "category": 3,
+      "added_at": "2026-03-20T11:20:00Z",
+      "price": "150.00",
+      "image": "https://cdn.api.kari.com/f/19509110_001.jpg"
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 7,
+    "fields": {
+      "name": "Кроссовки спортивные",
+      "description": "Беговые кроссовки с амортизацией, дышащий верх.",
+      "category": 3,
+      "added_at": "2026-04-01T08:00:00Z",
+      "price": "89.00",
+      "image": "https://respect-shoes.ru/upload/medialibrary/ca3/8nbohhqrteyyy1m2i0k4ua8ypb1lsa6w.jpg"
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 8,
+    "fields": {
+      "name": "Футболка хлопковая",
+      "description": "Базовая футболка из 100% хлопка, разные цвета.",
+      "category": 3,
+      "added_at": "2026-04-10T13:30:00Z",
+      "price": "19.00",
+      "image": "https://shop.dashaphi.ru/images/products/1/2735/577637039/51E7A598-A798-4079-91EC-CB357076DBB3.jpg"
+    }
+  }
+]

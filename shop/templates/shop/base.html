@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My market{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'shop/style.css' %}">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-inner">
+            <a href="{% url 'products_view' %}" class="logo">My market</a>
+            <nav class="nav">
+                <a href="{% url 'products_view' %}">Products</a>
+                <a href="{% url 'categories_view' %}">Categories</a>
+                <a href="{% url 'product_add_view' %}">Add Product</a>
+                <a href="{% url 'category_add_view' %}">Add Category</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container main">
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

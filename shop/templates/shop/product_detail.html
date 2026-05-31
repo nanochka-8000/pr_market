@@ -1,0 +1,26 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}{{ product.name }} — My market{% endblock %}
+
+{% block content %}
+    <div class="product-detail">
+        <div class="product-detail__image">
+            <img src="{{ product.image }}" alt="{{ product.name }}">
+        </div>
+        <div class="product-detail__info">
+            <h1 class="product-detail__title">{{ product.name }}</h1>
+            <p class="product-detail__category">{{ product.category.name }}</p>
+            <p class="product-detail__price">Price: {{ product.price }}$</p>
+            <p class="product-detail__description">{{ product.description|linebreaksbr }}</p>
+            <p class="product-detail__added">added: {{ product.added_at|date:"d/m/Y H:i" }}</p>
+
+            <div class="product-detail__actions">
+                <a href="{% url 'product_edit_view' product_id=product.pk %}" class="btn btn--primary">Edit</a>
+                <form method="post" action="{% url 'product_delete_view' product_id=product.pk %}" onsubmit="return confirm('Удалить товар?');" class="inline-form">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn--danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
