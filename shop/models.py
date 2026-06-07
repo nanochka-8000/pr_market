@@ -1,6 +1,9 @@
 from django.db import models
 from django.urls import reverse
+from django.utils.text import slugify
 
+
+from django.utils.text import slugify
 
 class Category(models.Model):
     name = models.CharField(
@@ -12,6 +15,12 @@ class Category(models.Model):
         blank=True,
         verbose_name='Описание'
     )
+    slug = models.SlugField(
+        max_length=120,
+        unique=True,
+        blank=True,
+        verbose_name='Slug'
+    )
 
     class Meta:
         verbose_name = 'Категория'
@@ -19,6 +28,14 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name, allow_unicode=True)
+        super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('category_products_view', kwargs={'category_slug': self.slug})
 
 
 class Product(models.Model):
@@ -41,18 +58,22 @@ class Product(models.Model):
         verbose_name='Дата добавления'
     )
     price = models.DecimalField(
-        max_digits=10,
+        max_digits=7,
         decimal_places=2,
         verbose_name='Стоимость'
     )
     image = models.URLField(
         verbose_name='Изображение'
     )
+    stock = models.PositiveIntegerField(
+        default=0,
+        verbose_name='Остаток'
+    )
 
     class Meta:
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'
-        ordering = ['-added_at']
+        ordering = ['category__name', 'name']
 
     def __str__(self):
         return self.name

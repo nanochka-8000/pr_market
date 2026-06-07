@@ -1,0 +1,17 @@
+{% for product in products %}
+    <article class="product-card">
+        <div class="product-card__image">
+            <img src="{{ product.image }}" alt="{{ product.name }}">
+        </div>
+        <div class="product-card__body">
+            <h2 class="product-card__title">{{ product.name }}</h2>
+            <p class="product-card__category">
+                <a href="{% url 'category_products_view' category_slug=product.category.slug %}" class="product-card__category-link">{{ product.category.name }}</a>
+            </p>
+            <p class="product-card__price">Price: {{ product.price }}$</p>
+            <a href="{% url 'product_view' product_id=product.pk %}" class="product-card__link">see more &gt;&gt;&gt;</a>
+        </div>
+    </article>
+{% empty %}
+    <p class="empty-message">Товаров пока нет.</p>
+{% endfor %}

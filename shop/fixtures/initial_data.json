@@ -4,6 +4,7 @@
     "pk": 1,
     "fields": {
       "name": "Электроника",
+      "slug": "electronics",
       "description": "Смартфоны, ноутбуки, аксессуары"
     }
   },
@@ -12,6 +13,7 @@
     "pk": 2,
     "fields": {
       "name": "Книги",
+      "slug": "books",
       "description": "Художественная и техническая литература"
     }
   },
@@ -20,6 +22,7 @@
     "pk": 3,
     "fields": {
       "name": "Одежда",
+      "slug": "clothes",
       "description": "Мужская и женская одежда"
     }
   },
@@ -32,7 +35,8 @@
       "category": 1,
       "added_at": "2026-01-15T10:00:00Z",
       "price": "1299.00",
-      "image": "https://softech.kg/image/catalog/Products/Phones/Apple/15%20Pro/01.jpg"
+      "image": "https://softech.kg/image/catalog/Products/Phones/Apple/15%20Pro/01.jpg",
+      "stock": 12
     }
   },
   {
@@ -44,7 +48,8 @@
       "category": 1,
       "added_at": "2026-02-10T12:30:00Z",
       "price": "1599.00",
-      "image": "https://asiastore.kg/image/cache/catalog/1newpage/apple/macbook/air/airm3/air15/mba15-m3-midnight-gallery1-202402-1200x1200.jpeg"
+      "image": "https://asiastore.kg/image/cache/catalog/1newpage/apple/macbook/air/airm3/air15/mba15-m3-midnight-gallery1-202402-1200x1200.jpeg",
+      "stock": 5
     }
   },
   {
@@ -56,7 +61,8 @@
       "category": 1,
       "added_at": "2026-03-01T09:15:00Z",
       "price": "249.00",
-      "image": "https://asiastore.kg/image/cache/catalog/airpods/airpodspro2gn/mqd83-1200x1200.jpeg"
+      "image": "https://asiastore.kg/image/cache/catalog/airpods/airpodspro2gn/mqd83-1200x1200.jpeg",
+      "stock": 0
     }
   },
   {
@@ -68,7 +74,8 @@
       "category": 2,
       "added_at": "2026-03-05T14:00:00Z",
       "price": "35.00",
-      "image": "https://avatars.mds.yandex.net/i?id=1ed2caa068e52232f096e96b558108b045de19cb-17448378-images-thumbs&n=13"
+      "image": "https://avatars.mds.yandex.net/i?id=1ed2caa068e52232f096e96b558108b045de19cb-17448378-images-thumbs&n=13",
+      "stock": 20
     }
   },
   {
@@ -80,7 +87,8 @@
       "category": 2,
       "added_at": "2026-03-12T16:45:00Z",
       "price": "29.00",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi25V2JwtWDEctBM-B7q28gPNMn3baISOI5g&s"
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi25V2JwtWDEctBM-B7q28gPNMn3baISOI5g&s",
+      "stock": 8
     }
   },
   {
@@ -92,7 +100,8 @@
       "category": 3,
       "added_at": "2026-03-20T11:20:00Z",
       "price": "150.00",
-      "image": "https://cdn.api.kari.com/f/19509110_001.jpg"
+      "image": "https://kostum66.ru/files/originals/pamir.jpg",
+      "stock": 15
     }
   },
   {
@@ -104,7 +113,8 @@
       "category": 3,
       "added_at": "2026-04-01T08:00:00Z",
       "price": "89.00",
-      "image": "https://respect-shoes.ru/upload/medialibrary/ca3/8nbohhqrteyyy1m2i0k4ua8ypb1lsa6w.jpg"
+      "image": "https://respect-shoes.ru/upload/medialibrary/ca3/8nbohhqrteyyy1m2i0k4ua8ypb1lsa6w.jpg",
+      "stock": 7
     }
   },
   {
@@ -116,7 +126,8 @@
       "category": 3,
       "added_at": "2026-04-10T13:30:00Z",
       "price": "19.00",
-      "image": "https://shop.dashaphi.ru/images/products/1/2735/577637039/51E7A598-A798-4079-91EC-CB357076DBB3.jpg"
+      "image": "https://shop.dashaphi.ru/images/products/1/2735/577637039/51E7A598-A798-4079-91EC-CB357076DBB3.jpg",
+      "stock": 30
     }
   }
 ]
