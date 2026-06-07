@@ -9,18 +9,16 @@
         </div>
         <div class="product-detail__info">
             <h1 class="product-detail__title">{{ product.name }}</h1>
-            <p class="product-detail__category">{{ product.category.name }}</p>
+            <p class="product-detail__category">
+                <a href="{% url 'category_products_view' category_slug=product.category.slug %}" class="product-detail__category-link">{{ product.category.name }}</a>
+            </p>
             <p class="product-detail__price">Price: {{ product.price }}$</p>
+            <p class="product-detail__stock">
+                В наличии: <strong>{{ product.stock }}</strong> шт.
+            </p>
             <p class="product-detail__description">{{ product.description|linebreaksbr }}</p>
             <p class="product-detail__added">added: {{ product.added_at|date:"d/m/Y H:i" }}</p>
 
             <div class="product-detail__actions">
                 <a href="{% url 'product_edit_view' product_id=product.pk %}" class="btn btn--primary">Edit</a>
                 <form method="post" action="{% url 'product_delete_view' product_id=product.pk %}" onsubmit="return confirm('Удалить товар?');" class="inline-form">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn--danger">Delete</button>
-                </form>
-            </div>
-        </div>
-    </div>
-{% endblock %}
