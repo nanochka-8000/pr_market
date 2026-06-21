@@ -1,0 +1,48 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}Корзина — My market{% endblock %}
+
+{% block content %}
+    <h1 class="page-title">Корзина</h1>
+
+    {% if cart_items %}
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>Товар</th>
+                    <th>Цена</th>
+                    <th>Количество</th>
+                    <th>Сумма</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart_items %}
+                    <tr>
+                        <td>
+                            <a href="{% url 'product_view' product_id=item.product.pk %}">{{ item.product.name }}</a>
+                        </td>
+                        <td>{{ item.product.price }}$</td>
+                        <td>
+                            <a href="{% url 'cart_decrease' pk=item.pk %}" class="cart-qty-btn">−</a>
+                            <span class="cart-qty">{{ item.quantity }}</span>
+                            <a href="{% url 'cart_add' product_id=item.product.pk %}?next={% url 'cart_view' %}" class="cart-qty-btn">+</a>
+                        </td>
+                        <td>{{ item.total }}$</td>
+                        <td>
+                            <a href="{% url 'cart_remove' pk=item.pk %}" class="btn btn--danger">Удалить</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" style="text-align: right; font-weight: 700;">Итого:</td>
+                    <td colspan="2" style="font-weight: 700;">{{ total }}$</td>
+                </tr>
+            </tfoot>
+        </table>
+    {% else %}
+        <p class="empty-message">Корзина пуста.</p>
+    {% endif %}
+{% endblock %}

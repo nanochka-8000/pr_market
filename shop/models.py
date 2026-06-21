@@ -80,3 +80,23 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         return reverse('product_view', kwargs={'product_id': self.pk})
+
+class CartItem(models.Model):
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.CASCADE,
+        related_name='cart_items',
+        verbose_name='Товар',
+    )
+    quantity = models.PositiveIntegerField(default=1, verbose_name='Количество')
+
+    class Meta:
+        verbose_name = 'Товар в корзине'
+        verbose_name_plural = 'Товары в корзине'
+
+    def __str__(self):
+        return f'{self.product.name} x {self.quantity}'
+
+    @property
+    def total(self):
+        return self.product.price * self.quantity

@@ -20,6 +20,7 @@
             <p class="product-detail__added">added: {{ product.added_at|date:"d/m/Y H:i" }}</p>
 
             <div class="product-detail__actions">
+                <a href="{% url 'cart_add' product_id=product.pk %}?next={% url 'product_view' product_id=product.pk %}" class="btn btn--primary">Cart</a>
                 <a href="{% url 'product_edit_view' product_id=product.pk %}" class="btn btn--primary">Edit</a>
                 <a href="{% url 'product_delete_view' product_id=product.pk %}" class="btn btn--danger">Delete</a>
             </div>

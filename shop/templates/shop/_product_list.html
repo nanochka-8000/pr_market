@@ -9,7 +9,10 @@
                 <a href="{% url 'category_products_view' category_slug=product.category.slug %}" class="product-card__category-link">{{ product.category.name }}</a>
             </p>
             <p class="product-card__price">Price: {{ product.price }}$</p>
-            <a href="{% url 'product_view' product_id=product.pk %}" class="product-card__link">see more &gt;&gt;&gt;</a>
+            <div style="display: flex; gap: 8px; align-items: center; margin-top: auto;">
+                <a href="{% url 'product_view' product_id=product.pk %}" class="product-card__link">see more &gt;&gt;&gt;</a>
+                <a href="{% url 'cart_add' product_id=product.pk %}?next={{ request.get_full_path }}" class="btn btn--primary" style="margin-left: auto;">Cart</a>
+            </div>
         </div>
     </article>
 {% empty %}

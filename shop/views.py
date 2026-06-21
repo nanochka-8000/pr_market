@@ -11,6 +11,10 @@ from django.views.generic import (
 
 from .forms import CategoryForm, ProductForm, ProductSearchForm
 from .models import Category, Product
+from django.urls import reverse
+from django.views import View
+
+from .models import CartItem
 
 class ProductListView(ListView):
     model = Product
@@ -140,3 +144,65 @@ def category_delete_view(request, category_id):
     if request.method == 'POST':
         category.delete()
     return redirect('categories_view')
+
+
+
+class AddToCartView(View):
+
+    def get(self, request, product_id):
+        product = get_object_or_404(Product, pk=product_id)
+        cart_item, created = CartItem.objects.get_or_create(product=product)
+
+        if created:
+            if product.stock < 1:
+                cart_item.delete()
+            else:
+                cart_item.quantity = 1
+                cart_item.save()
+        else:
+            if cart_item.quantity + 1 <= product.stock:
+                cart_item.quantity += 1
+                cart_item.save()
+
+        return self._redirect_back(request, product)
+
+    def _redirect_back(self, request, product):
+        next_url = request.GET.get('next')
+        if next_url:
+            return redirect(next_url)
+        return redirect('products_view')
+
+
+class CartView(ListView):
+    model = CartItem
+    template_name = 'shop/cart.html'
+    context_object_name = 'cart_items'
+
+    def get_queryset(self):
+        return CartItem.objects.select_related('product').order_by('product__name')
+
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        items = ctx['cart_items']
+        ctx['total'] = sum(item.total for item in items)
+        return ctx
+
+
+class RemoveFromCartView(View):
+
+    def get(self, request, pk):
+        cart_item = get_object_or_404(CartItem, pk=pk)
+        cart_item.delete()
+        return redirect('cart_view')
+
+
+class DecreaseCartItemView(View):
+
+    def get(self, request, pk):
+        cart_item = get_object_or_404(CartItem, pk=pk)
+        if cart_item.quantity > 1:
+            cart_item.quantity -= 1
+            cart_item.save()
+        else:
+            cart_item.delete()
+        return redirect('cart_view')

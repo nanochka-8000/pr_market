@@ -15,4 +15,9 @@ urlpatterns = [
     path('categories/add', views.category_add_view, name='category_add_view'),
     path('categories/<int:category_id>/edit', views.category_edit_view, name='category_edit_view'),
     path('categories/<int:category_id>/delete', views.category_delete_view, name='category_delete_view'),
+
+    path('cart/', views.CartView.as_view(), name='cart_view'),
+    path('cart/add/<int:product_id>/', views.AddToCartView.as_view(), name='cart_add'),
+    path('cart/remove/<int:pk>/', views.RemoveFromCartView.as_view(), name='cart_remove'),
+    path('cart/decrease/<int:pk>/', views.DecreaseCartItemView.as_view(), name='cart_decrease'),
 ]
