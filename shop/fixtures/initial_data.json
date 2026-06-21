@@ -129,5 +129,57 @@
       "image": "https://shop.dashaphi.ru/images/products/1/2735/577637039/51E7A598-A798-4079-91EC-CB357076DBB3.jpg",
       "stock": 30
     }
+  },
+  {
+    "model": "shop.product",
+    "pk": 9,
+    "fields": {
+      "name": "iPad Air",
+      "description": "Планшет Apple с дисплеем Liquid Retina, чип M2.",
+      "category": 1,
+      "added_at": "2026-04-15T09:00:00Z",
+      "price": "699.00",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/IPad_Air.png/960px-IPad_Air.png",
+      "stock": 6
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 10,
+    "fields": {
+      "name": "Война и мир",
+      "description": "Роман-эпопея Льва Толстого в четырёх томах.",
+      "category": 2,
+      "added_at": "2026-04-20T10:00:00Z",
+      "price": "25.00",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/MU_EAB_557_-_William_Jay_-_War_and_Peace_-_0004.jpg/960px-MU_EAB_557_-_William_Jay_-_War_and_Peace_-_0004.jpg",
+      "stock": 14
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 11,
+    "fields": {
+      "name": "Мастер и Маргарита",
+      "description": "Знаменитый роман Михаила Булгакова.",
+      "category": 2,
+      "added_at": "2026-04-22T10:00:00Z",
+      "price": "22.00",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Bulgakov_MasterMargarita.jpg/440px-Bulgakov_MasterMargarita.jpg",
+      "stock": 0
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 12,
+    "fields": {
+      "name": "Джинсы прямые",
+      "description": "Классические прямые джинсы, тёмно-синий цвет.",
+      "category": 3,
+      "added_at": "2026-04-25T11:00:00Z",
+      "price": "55.00",
+      "image": "https://basket-01.wbbasket.ru/vol30/part3052/3052289/images/big/1.webp",
+      "stock": 18
+    }
   }
 ]

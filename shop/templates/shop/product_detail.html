@@ -21,4 +21,8 @@
 
             <div class="product-detail__actions">
                 <a href="{% url 'product_edit_view' product_id=product.pk %}" class="btn btn--primary">Edit</a>
-                <form method="post" action="{% url 'product_delete_view' product_id=product.pk %}" onsubmit="return confirm('Удалить товар?');" class="inline-form">
+                <a href="{% url 'product_delete_view' product_id=product.pk %}" class="btn btn--danger">Delete</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

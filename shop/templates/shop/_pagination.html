@@ -1,0 +1,15 @@
+{% if is_paginated %}
+<nav class="pagination-nav" style="margin-top: 24px; display: flex; justify-content: center; gap: 8px; align-items: center;">
+    {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}{% if query %}&q={{ query }}{% endif %}" class="categories-nav__link">← Назад</a>
+    {% endif %}
+
+    <span class="categories-nav__link categories-nav__link--active">
+        {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}
+    </span>
+
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}{% if query %}&q={{ query }}{% endif %}" class="categories-nav__link">Вперёд →</a>
+    {% endif %}
+</nav>
+{% endif %}

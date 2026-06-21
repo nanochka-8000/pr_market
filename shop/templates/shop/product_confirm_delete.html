@@ -1,0 +1,18 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}Удаление товара — My market{% endblock %}
+
+{% block content %}
+    <div class="form-wrapper">
+        <h1 class="form-title">Удалить товар?</h1>
+        <p>Вы точно хотите удалить <strong>{{ object.name }}</strong>?</p>
+
+        <form method="post">
+            {% csrf_token %}
+            <div style="margin-top: 16px; display: flex; gap: 10px;">
+                <button type="submit" class="btn btn--danger">Да, удалить</button>
+                <a href="{% url 'product_view' product_id=object.pk %}" class="btn btn--primary">Отмена</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}
