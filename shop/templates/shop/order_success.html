@@ -1,0 +1,41 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}Заказ оформлен — My market{% endblock %}
+
+{% block content %}
+    <h1 class="page-title">Спасибо! Заказ оформлен</h1>
+
+    <div class="form-wrapper" style="max-width: 600px;">
+        <p><strong>Номер заказа:</strong> #{{ order.pk }}</p>
+        <p><strong>Имя:</strong> {{ order.name }}</p>
+        <p><strong>Телефон:</strong> {{ order.phone }}</p>
+        <p><strong>Адрес:</strong> {{ order.address }}</p>
+        <p><strong>Дата:</strong> {{ order.created_at|date:"d.m.Y H:i" }}</p>
+
+        <h2 style="margin-top: 20px; font-size: 18px;">Состав заказа</h2>
+        <table class="cart-table" style="margin-top: 10px;">
+            <thead>
+                <tr>
+                    <th>Товар</th>
+                    <th>Цена</th>
+                    <th>Количество</th>
+                    <th>Сумма</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in order.items.all %}
+                    <tr>
+                        <td>{{ item.product.name }}</td>
+                        <td>{{ item.product.price }}$</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ item.product.price|floatformat:2 }}$ × {{ item.quantity }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div style="margin-top: 20px;">
+            <a href="{% url 'products_view' %}" class="btn btn--primary">Вернуться к покупкам</a>
+        </div>
+    </div>
+{% endblock %}

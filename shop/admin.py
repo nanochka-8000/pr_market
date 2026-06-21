@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import Category, Product
 from .models import CartItem
+from .models import Order, OrderItem
 
 
 @admin.register(Category)
@@ -21,3 +22,16 @@ class ProductAdmin(admin.ModelAdmin):
 @admin.register(CartItem)
 class CartItemAdmin(admin.ModelAdmin):
     list_display = ('id', 'product', 'quantity')
+
+
+class OrderItemInline(admin.TabularInline):
+    model = OrderItem
+    extra = 0
+    autocomplete_fields = ('product',)
+
+
+@admin.register(Order)
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'phone', 'created_at')
+    ordering = ('-created_at',)
+    inlines = [OrderItemInline]

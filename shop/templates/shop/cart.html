@@ -42,6 +42,15 @@
                 </tr>
             </tfoot>
         </table>
+
+        <div class="form-wrapper" style="margin-top: 30px;">
+            <h2 class="form-title">Оформление заказа</h2>
+            <form method="post" action="{% url 'order_create' %}">
+                {% csrf_token %}
+                {% include 'shop/_form_fields.html' with form=order_form %}
+                <button type="submit" class="btn btn--primary">Оформить заказ</button>
+            </form>
+        </div>
     {% else %}
         <p class="empty-message">Корзина пуста.</p>
     {% endif %}

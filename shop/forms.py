@@ -1,5 +1,6 @@
 from django import forms
 from .models import Category, Product
+from .models import Order
 
 
 class CategoryForm(forms.ModelForm):
@@ -66,3 +67,15 @@ class ProductSearchForm(forms.Form):
             'placeholder': 'Поиск по названию...',
         })
     )
+
+
+class OrderForm(forms.ModelForm):
+    class Meta:
+        model = Order
+        fields = ['name', 'address', 'phone']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ваше имя'}),
+            'address': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Адрес доставки'}),
+            'phone': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Телефон'}),
+        }
+        labels = {'name': '', 'address': '', 'phone': ''}

@@ -20,4 +20,7 @@ urlpatterns = [
     path('cart/add/<int:product_id>/', views.AddToCartView.as_view(), name='cart_add'),
     path('cart/remove/<int:pk>/', views.RemoveFromCartView.as_view(), name='cart_remove'),
     path('cart/decrease/<int:pk>/', views.DecreaseCartItemView.as_view(), name='cart_decrease'),
+
+    path('order/create/', views.CreateOrderView.as_view(), name='order_create'),
+    path('order/<int:pk>/success/', views.OrderSuccessView.as_view(), name='order_success'),
 ]

@@ -11,10 +11,13 @@ from django.views.generic import (
 
 from .forms import CategoryForm, ProductForm, ProductSearchForm
 from .models import Category, Product
-from django.urls import reverse
 from django.views import View
 
 from .models import CartItem
+from django.db import transaction
+
+from .forms import OrderForm
+from .models import Order, OrderItem
 
 class ProductListView(ListView):
     model = Product
@@ -185,6 +188,7 @@ class CartView(ListView):
         ctx = super().get_context_data(**kwargs)
         items = ctx['cart_items']
         ctx['total'] = sum(item.total for item in items)
+        ctx['order_form'] = OrderForm()
         return ctx
 
 
@@ -206,3 +210,38 @@ class DecreaseCartItemView(View):
         else:
             cart_item.delete()
         return redirect('cart_view')
+
+
+class CreateOrderView(View):
+
+    def post(self, request):
+        form = OrderForm(request.POST)
+        cart_items = CartItem.objects.select_related('product').all()
+
+        if not cart_items.exists():
+            return redirect('cart_view')
+
+        if form.is_valid():
+            with transaction.atomic():
+                order = form.save()
+                for item in cart_items:
+                    OrderItem.objects.create(
+                        order=order,
+                        product=item.product,
+                        quantity=item.quantity,
+                    )
+                cart_items.delete()
+            return redirect('order_success', pk=order.pk)
+
+        total = sum(item.total for item in cart_items)
+        return render(request, 'shop/cart.html', {
+            'cart_items': cart_items,
+            'total': total,
+            'order_form': form,
+        })
+
+
+class OrderSuccessView(DetailView):
+    model = Order
+    template_name = 'shop/order_success.html'
+    context_object_name = 'order'
